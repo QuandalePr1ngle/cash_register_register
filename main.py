@@ -1,5 +1,6 @@
-#
-# Kases aparāts
+product_name_check = 0
+product_price_check = 0
+import random
 #
 # 0.5pt pievienot jaunu preci - nosaukumu un cenu
 #     0.5pt preces nosaukumam jābūt no 2 līdz 120 simboliem (jābūt validācijai, rādīt paziņojumu ja neder)
@@ -29,3 +30,63 @@
 # Vārdnīcas - https://www.w3schools.com/python/python_dictionaries.asp
 # Klonēt repozitoriju - hhttps://code.visualstudio.com/docs/sourcecontrol/intro-to-git
 #
+Products = []
+
+import json
+Products_file = open('Products.json')
+Products = json.load(Products_file)
+# load expenses from expenses.json file here
+# https://www.geeksforgeeks.org/read-write-and-parse-json-using-python/ (Python read JSON file)
+pass
+
+while True:
+    print("1. Add a new product.")
+    print("2. Clear your basket")
+    print("3. Show your basket.")
+    print("4. Discount")
+    command = input("\nChoose command: ")
+    if command == "1":
+        product_name_check = 0
+        product_price_check = 0
+        product_name = ''
+        product_price = ''
+        while product_name_check == 0:
+            product_name = input("Enter product name: ")
+            if len(product_name) <= 2:
+                print("Nope")
+            elif len(product_name) >= 120:
+                print("Nope")
+            else:
+                product_name_check =+ 1
+        while product_price_check == 0:    
+            product_price = input("Enter the price of product: ")
+            if float(product_price) <= 0:
+                print("Nope")
+            elif float(product_price) >= 9999:
+                print("Nope")
+            else:
+                product_price_check =+ 1
+        dictionary = {
+        "Name": product_name,
+        "Price": product_price,
+        }
+        Products.append(dictionary)
+        pass
+    if command == "2":
+        print("Do you want to clear it fully or only one product?")
+        print("If fully type 0, else type 1")
+        only_one = input()
+        if float(only_one) == 0:
+            Products.clear()
+        elif float(only_one) == 1:
+            indexx = input("Enter the index: ")
+            del Products[int(indexx)]
+            pass
+    if command == "3":
+      print([Products[0:20]])
+      pass  
+      if command == "4":
+          pass
+
+    with open("Products.json", "w") as outfile:
+        json.dump(Products, outfile)
