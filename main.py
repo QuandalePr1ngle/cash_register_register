@@ -1,6 +1,8 @@
+# Svirshch Daniil 
 product_name_check = 0
 product_price_check = 0
-import random
+
+# import random??
 #
 # 0.5pt pievienot jaunu preci - nosaukumu un cenu
 #     0.5pt preces nosaukumam jābūt no 2 līdz 120 simboliem (jābūt validācijai, rādīt paziņojumu ja neder)
