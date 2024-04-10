@@ -46,6 +46,7 @@ while True:
     print("2. Clear your basket")
     print("3. Show your basket.")
     print("4. Discount")
+    print("5. Get your check")
     command = input("\nChoose command: ")
     if command == "1":
         product_name_check = 0
@@ -85,10 +86,15 @@ while True:
             del Products[int(indexx)]
             pass
     if command == "3":
-      print([Products[0:20]])
-      pass  
-      if command == "4":
-          pass
+      for x in Products:
+          print(x)
+          pass  
+#     if command == "4": # Not working
+#          pass
+#      
+#      if command == "5":
+#          summ = Products.get("Price") # Not working
+#         print(summ)
 
     with open("Products.json", "w") as outfile:
         json.dump(Products, outfile)
